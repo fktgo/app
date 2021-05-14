@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:app/session.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -28,10 +31,20 @@ class FKTGoHome extends StatefulWidget {
 
 class _FKTGoHomeState extends State<FKTGoHome> {
   bool recording = false;
+  Session? session;
 
   void _toggleRecording() {
     setState(() {
       recording = !recording;
+
+      if (recording) {
+        session = Session(DeviceInputs());
+        session?.start();
+      } else {
+        session?.stop();
+        log(session.toString());
+        session = null;
+      }
     });
   }
 

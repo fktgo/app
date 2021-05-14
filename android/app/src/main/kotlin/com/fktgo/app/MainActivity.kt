@@ -1,4 +1,4 @@
-package com.fktgo.app.app
+package com.fktgo.app
 
 import io.flutter.embedding.android.FlutterActivity
 
