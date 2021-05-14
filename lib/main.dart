@@ -1,7 +1,9 @@
 import 'dart:developer';
+import 'package:flutter/material.dart';
 
 import 'package:app/session.dart';
-import 'package:flutter/material.dart';
+import 'package:app/inputs.dart';
+
 
 void main() {
   runApp(FKTGo());
@@ -38,7 +40,9 @@ class _FKTGoHomeState extends State<FKTGoHome> {
       recording = !recording;
 
       if (recording) {
-        session = Session(DeviceInputs());
+        session = Session(Inputs(
+          location: DeviceLocationInputs()
+        ));
         session?.start();
       } else {
         session?.stop();
