@@ -1,8 +1,4 @@
-# app
-
-FKT Go
-
-## Getting Started
+# FKT Go
 
 Fk iT, Go!
 
