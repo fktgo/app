@@ -22,11 +22,11 @@ dependencies:
   flutter:
     sdk: flutter
 
-
   cupertino_icons: ^1.0.2
   geolocator: ^7.0.3
 
 dev_dependencies:
+  test: ^1.16.5
   flutter_test:
     sdk: flutter
 
