@@ -26,3 +26,23 @@
     - Easy to simply start a run
   - Bad:
     - Cannot easily export or share data
+
+- (Sportractive)[http://sportractive.com/]
+  Running app
+  - Good:
+    - Syncs with SmashRun
+  - Bad:
+    - Ugly
+    - Confusing (I started a "regular" when I thought I had selected a training session, several
+     times)
+    - Confusing, limited way of setting training speed limits
+    - Have to dig into settings every time I need to adjust voice output
+    - Android only
+
+- (iSmoothRun)[http://www.ismoothrun.com/]
+  Running app
+  - Good:
+    - Flexible, allows setting any kind of run
+  - Bad:
+    - Paid
+    - Ugly ("designed by programmers")
