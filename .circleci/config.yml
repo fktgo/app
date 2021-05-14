@@ -1,0 +1,10 @@
+version: 2.1
+orbs:
+  flutter: checkmoney/flutter@1.1.1
+workflows:
+  lint:
+    jobs:
+      - flutter/lint
+  smoke_test:
+    jobs:
+      - flutter/test
