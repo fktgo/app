@@ -1,10 +1,58 @@
 version: 2.1
-orbs:
-  flutter: checkmoney/flutter@1.1.1
+# Adapted from checkmonkey/flutter
+jobs:
+  lint:
+    description: "Run static analysis"
+    docker:
+      - image: cirrusci/flutter:stable
+#    working_directory: ~/repo
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - dart-dependencies-{{ checksum "pubspec.lock" }}
+            - dart-dependencies-
+      - run:
+          name: Install Dependencies
+          command: flutter pub get
+      - run:
+          name: Build
+          command: flutter packages pub run build_runner build
+      - save_cache:
+          paths:
+            - .dart_tool
+          key: dart-dependencies-{{ checksum "pubspec.lock" }}
+      - run:
+          name: Analyze code
+          command: flutter analyze lib
+  test:
+    description: "Run tests"
+    docker:
+      - image: cirrusci/flutter:stable
+#    working_directory: ~/repo
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - dart-dependencies-{{ checksum "pubspec.lock" }}
+            - dart-dependencies-
+      - run:
+          name: Install Dependencies
+          command: flutter pub get
+      - run:
+          name: Build
+          command: flutter packages pub run build_runner build
+      - save_cache:
+          paths:
+            - .dart_tool
+          key: dart-dependencies-{{ checksum "pubspec.lock" }}
+      - run:
+          name: Run tests
+          command: flutter test
 workflows:
   lint:
     jobs:
-      - flutter/lint
+      - lint
   smoke_test:
     jobs:
-      - flutter/test
+      - test
