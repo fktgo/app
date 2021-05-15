@@ -44,8 +44,7 @@ class _FKTGoHomeState extends State<FKTGoHome> {
       } else {
         session?.stop();
         var stats = session.toString();
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => DisplayStats(stats)));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => DisplayStats(stats)));
         session = null;
       }
     });
@@ -67,10 +66,8 @@ class _FKTGoHomeState extends State<FKTGoHome> {
                 onPressed: _toggleRecording,
                 child: Text(recording ? 'Stop' : 'Go'),
                 style: ButtonStyle(
-                  shape:
-                      MaterialStateProperty.all<CircleBorder>(CircleBorder()),
-                  backgroundColor: MaterialStateProperty.all<Color>(
-                      recording ? Colors.deepOrange : Colors.green),
+                  shape: MaterialStateProperty.all<CircleBorder>(CircleBorder()),
+                  backgroundColor: MaterialStateProperty.all<Color>(recording ? Colors.deepOrange : Colors.green),
                 ),
               ),
               height: 100,

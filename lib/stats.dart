@@ -17,8 +17,7 @@ class DisplayStats extends StatelessWidget {
             child: Text(stats),
           )),
           Container(
-            child: ElevatedButton(
-                child: Text("Ok"), onPressed: () => Navigator.pop(context)),
+            child: ElevatedButton(child: Text("Ok"), onPressed: () => Navigator.pop(context)),
             width: 200,
           ),
         ],
