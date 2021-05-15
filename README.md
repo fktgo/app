@@ -1,5 +1,7 @@
+[![CI](https://github.com/fktgo/app/actions/workflows/main.yml/badge.svg)](https://github.com/fktgo/app/actions/workflows/main.yml)
+
 # FKT Go
 
 Fk iT, Go!
 
-A running app which makes quick runs quick, and complex training schedules easy
+Your simple runs made simple, and your complex training plan also made simple.
