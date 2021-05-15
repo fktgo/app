@@ -47,12 +47,15 @@ jobs:
             - .dart_tool
           key: dart-dependencies-{{ checksum "pubspec.lock" }}
       - run:
+          name: Run flutter doctor
+          command: flutter doctor
+      - run:
           name: Run tests
           command: flutter test
 workflows:
   lint:
     jobs:
       - lint
-  smoke_test:
+  tests:
     jobs:
       - test
