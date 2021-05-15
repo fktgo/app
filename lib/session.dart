@@ -12,7 +12,8 @@ class Session {
 
   Future<void> start() async {
     await inputs.start();
-    timer = Timer.periodic(delay, collect);
+    await collect();
+    timer = Timer.periodic(delay, timedCollect);
   }
 
   Future<void> stop() async {
@@ -20,8 +21,12 @@ class Session {
     await inputs.stop();
   }
 
-  void collect(Timer t) {
+  Future<void> collect() async {
     events.add(Event.fromInputs(inputs));
+  }
+
+  void timedCollect(Timer t) {
+    collect();
   }
 
   @override
