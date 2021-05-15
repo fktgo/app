@@ -1,8 +1,7 @@
-import 'dart:developer';
-import 'package:flutter/material.dart';
-
-import 'package:app/session.dart';
 import 'package:app/inputs.dart';
+import 'package:app/session.dart';
+import 'package:app/stats.dart';
+import 'package:flutter/material.dart';
 
 void main() {
   runApp(FKTGo());
@@ -12,12 +11,13 @@ class FKTGo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'FKT Go',
-      theme: ThemeData(
-        primarySwatch: Colors.deepOrange,
-      ),
-      home: FKTGoHome(title: 'FKT Go'),
-    );
+        title: 'FKT Go',
+        theme: ThemeData(
+          primarySwatch: Colors.deepOrange,
+        ),
+        home: Scaffold(
+          body: FKTGoHome(title: 'FKT Go'),
+        ));
   }
 }
 
@@ -43,7 +43,8 @@ class _FKTGoHomeState extends State<FKTGoHome> {
         session?.start();
       } else {
         session?.stop();
-        log(session.toString());
+        var stats = session.toString();
+        Navigator.push(context, MaterialPageRoute(builder: (context) => DisplayStats(stats)));
         session = null;
       }
     });
@@ -65,10 +66,8 @@ class _FKTGoHomeState extends State<FKTGoHome> {
                 onPressed: _toggleRecording,
                 child: Text(recording ? 'Stop' : 'Go'),
                 style: ButtonStyle(
-                  shape:
-                      MaterialStateProperty.all<CircleBorder>(CircleBorder()),
-                  backgroundColor: MaterialStateProperty.all<Color>(
-                      recording ? Colors.deepOrange : Colors.green),
+                  shape: MaterialStateProperty.all<CircleBorder>(CircleBorder()),
+                  backgroundColor: MaterialStateProperty.all<Color>(recording ? Colors.deepOrange : Colors.green),
                 ),
               ),
               height: 100,
