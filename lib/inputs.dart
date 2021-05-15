@@ -3,7 +3,6 @@ import 'dart:developer';
 
 import 'package:geolocator/geolocator.dart';
 
-
 class Inputs {
   LocationInputs? location;
 
@@ -62,7 +61,6 @@ class DeviceLocationInputs extends LocationInputs {
 
     return true;
   }
-
 
   Future<void> start() async {
     if (await _hasLocationPermissions()) {

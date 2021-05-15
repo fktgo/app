@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:app/inputs.dart';
 
-
 class Session {
   final List<Event> events = [];
   final Inputs inputs;

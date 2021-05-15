@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:app/session.dart';
 import 'package:app/inputs.dart';
 
-
 void main() {
   runApp(FKTGo());
 }
@@ -40,9 +39,7 @@ class _FKTGoHomeState extends State<FKTGoHome> {
       recording = !recording;
 
       if (recording) {
-        session = Session(Inputs(
-          location: DeviceLocationInputs()
-        ));
+        session = Session(Inputs(location: DeviceLocationInputs()));
         session?.start();
       } else {
         session?.stop();
@@ -66,16 +63,12 @@ class _FKTGoHomeState extends State<FKTGoHome> {
             Container(
               child: ElevatedButton(
                 onPressed: _toggleRecording,
-                child: Text(
-                  recording ? 'Stop' : 'Go'
-                ),
+                child: Text(recording ? 'Stop' : 'Go'),
                 style: ButtonStyle(
-                  shape: MaterialStateProperty.all<CircleBorder>(
-                    CircleBorder()
-                  ),
+                  shape:
+                      MaterialStateProperty.all<CircleBorder>(CircleBorder()),
                   backgroundColor: MaterialStateProperty.all<Color>(
-                    recording? Colors.deepOrange : Colors.green
-                  ),
+                      recording ? Colors.deepOrange : Colors.green),
                 ),
               ),
               height: 100,
