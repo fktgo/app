@@ -18,6 +18,8 @@ jobs:
       - uses: dart-lang/setup-dart@main
       - uses: actions/setup-java@v2
         with:
+          distribution: 'adopt'
+          check-latest: true
           java-version: '12.x'
       - uses: subosito/flutter-action@v1
         with:
