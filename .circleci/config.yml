@@ -5,7 +5,7 @@ jobs:
     description: "Run static analysis"
     docker:
       - image: cirrusci/flutter:stable
-#    working_directory: ~/repo
+    working_directory: ~/repo
     steps:
       - checkout
       - restore_cache:
@@ -29,7 +29,7 @@ jobs:
     description: "Run tests"
     docker:
       - image: cirrusci/flutter:stable
-#    working_directory: ~/repo
+    working_directory: ~/repo
     steps:
       - checkout
       - restore_cache:
