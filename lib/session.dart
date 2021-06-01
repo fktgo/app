@@ -13,7 +13,9 @@ class Session {
   Future<void> start() async {
     await inputs.start();
     await collect();
-    timer = Timer.periodic(delay, timedCollect);
+    if (timer == null) {
+      timer = Timer.periodic(delay, timedCollect);
+    }
   }
 
   Future<void> stop() async {
@@ -29,6 +31,10 @@ class Session {
     collect();
   }
 
+  bool isActive() {
+    return this.timer?.isActive ?? false;
+  }
+
   @override
   String toString() {
     return events.map((e) => e.toString()).join("\n");
@@ -36,16 +42,18 @@ class Session {
 }
 
 class Event {
-  DateTime? timestamp;
+  DateTime timestamp;
   double? lat;
   double? lon;
 
+  Event({required this.timestamp, this.lat, this.lon});
+
   static Event fromInputs(Inputs inputs) {
-    Event e = Event();
-    e.lat = inputs.location?.lat;
-    e.lon = inputs.location?.lon;
-    e.timestamp = DateTime.now().toUtc();
-    return e;
+    return Event(
+      lat: inputs.location?.lat,
+      lon: inputs.location?.lon,
+      timestamp: DateTime.now().toUtc(),
+    );
   }
 
   @override

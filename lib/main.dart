@@ -1,3 +1,4 @@
+import 'package:app/display_stats.dart';
 import 'package:app/inputs.dart';
 import 'package:app/session.dart';
 import 'package:app/stats.dart';
@@ -32,22 +33,26 @@ class FKTGoHome extends StatefulWidget {
 
 class _FKTGoHomeState extends State<FKTGoHome> {
   bool recording = false;
-  Session? session;
+  Session session;
+
+  _FKTGoHomeState() : session = Session(Inputs(location: DeviceLocationInputs()));
 
   void _toggleRecording() {
     setState(() {
       recording = !recording;
 
       if (recording) {
-        session = Session(Inputs(location: DeviceLocationInputs()));
-        session?.start();
+        session.start();
       } else {
-        session?.stop();
-        var stats = session.toString();
-        Navigator.push(context, MaterialPageRoute(builder: (context) => DisplayStats(stats)));
-        session = null;
+        session.stop();
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => DisplayStats(StatsCalculator(session.events).calculate())));
       }
     });
+  }
+
+  void newSession() {
+    session = Session(Inputs(location: DeviceLocationInputs()));
   }
 
   @override

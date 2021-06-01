@@ -1,7 +1,8 @@
+import 'package:app/stats.dart';
 import 'package:flutter/material.dart';
 
 class DisplayStats extends StatelessWidget {
-  final String stats;
+  final SessionStats stats;
 
   DisplayStats(this.stats);
 
@@ -14,7 +15,7 @@ class DisplayStats extends StatelessWidget {
         children: [
           Expanded(
               child: SingleChildScrollView(
-            child: Text(stats),
+            child: Text('Duration: ${stats.duration}'),
           )),
           Container(
             child: ElevatedButton(child: Text("Ok"), onPressed: () => Navigator.pop(context)),
