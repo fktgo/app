@@ -8,7 +8,7 @@ class StatsCalculator {
 
   SessionStats calculate() {
     return SessionStats(
-      duration: data.last.timestamp.difference(data.first.timestamp),
+      duration: data.isNotEmpty ? data.last.timestamp.difference(data.first.timestamp) : Duration(),
       distance: distance(),
     );
   }
