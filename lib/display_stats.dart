@@ -17,6 +17,7 @@ class DisplayStats extends StatelessWidget {
               child: Column(children: [
             Text('Duration: ${stats.duration}'),
             Text('Distance: ${displayDecimal(stats.distance)}m'),
+            Text('Average pace: ${displayDecimal(stats.avg_pace)} min/km'),
           ])),
           Container(
             child: ElevatedButton(child: Text("Ok"), onPressed: () => Navigator.pop(context)),
