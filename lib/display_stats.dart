@@ -14,9 +14,10 @@ class DisplayStats extends StatelessWidget {
           child: Column(
         children: [
           Expanded(
-              child: SingleChildScrollView(
-            child: Text('Duration: ${stats.duration}'),
-          )),
+              child: Column(children: [
+            Text('Duration: ${stats.duration}'),
+            Text('Distance: ${displayDecimal(stats.distance)}m'),
+          ])),
           Container(
             child: ElevatedButton(child: Text("Ok"), onPressed: () => Navigator.pop(context)),
             width: 200,
@@ -25,5 +26,9 @@ class DisplayStats extends StatelessWidget {
       )),
       padding: EdgeInsets.only(top: 100, bottom: 20, left: 10, right: 10),
     ));
+  }
+
+  String displayDecimal(double n) {
+    return n.toStringAsFixed(n.truncateToDouble() == n ? 0 : 2);
   }
 }
