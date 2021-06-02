@@ -37,7 +37,7 @@ class SessionStats {
   final Duration duration;
   final double distance;
   // Minutes per km
-  double get avg_pace => duration.inMinutes / (distance / 1000); // commitlock: what if distance is very small?
+  double get avgPace => duration.inMinutes / (distance / 1000); // commitlock: what if distance is very small?
 
   SessionStats({required this.duration, required this.distance});
 }
