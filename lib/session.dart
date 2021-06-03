@@ -56,6 +56,10 @@ class Event {
     );
   }
 
+  bool isValid() {
+    return lat != null && lon != null;
+  }
+
   @override
   String toString() {
     return '{$timestamp}: {$lat} / {$lon}';
