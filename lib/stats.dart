@@ -15,22 +15,14 @@ class StatsCalculator {
   }
 
   double distance(List<Event> events) {
-    double d = 0.0;
-    int i = 0, j;
-    do {
-      while (i < events.length - 1 && !events[i].isValid()) {
-        i++;
-      }
-      j = i + 1;
-      while (j < events.length && !events[j].isValid()) {
-        j++;
-      }
-      if (j < events.length) {
-        d = d +
-            Geolocator.distanceBetween(events[i].lat ?? 0, events[i].lon ?? 0, events[j].lat ?? 0, events[j].lon ?? 0);
-        i = j;
-      }
-    } while (j < events.length);
+    double d = 0;
+    int i = 0, j = 1;
+    while (j < events.length) {
+      d = d +
+          Geolocator.distanceBetween(events[i].lat ?? 0, events[i].lon ?? 0, events[j].lat ?? 0, events[j].lon ?? 0);
+      i = j;
+      j++;
+    }
     return d;
   }
 }
