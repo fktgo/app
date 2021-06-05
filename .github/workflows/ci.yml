@@ -33,13 +33,16 @@ jobs:
         run: flutter pub get
 
       - name: Verify formatting
-        run: flutter format -l 120 --set-exit-if-changed .
+        run: make test-formatting
 
-      - name: Analyze project source
-        run: flutter analyze --fatal-infos .
+      - name: Lint
+        run: make lint
         
-      - name: Run tests
-        run: flutter test
+      - name: Run unit tests
+        run: make unittest
+
+      - name: Run smoke tests
+        run: make test-widgets
 
       - name: Build APK
         run: flutter build apk
