@@ -109,4 +109,31 @@ void main() {
       expect(stats.avgPace, 0);
     });
   });
+
+  group('SessionStats', () {
+    test('avgPace with no duration', () {
+      var stats = SessionStats(duration: Duration(), distance: 10);
+      expect(stats.avgPace, 0);
+    });
+
+    test('avgPage with no distance', () {
+      var stats = SessionStats(duration: Duration(minutes: 10), distance: 0);
+      expect(stats.avgPace, 0);
+    });
+
+    test('avgPace with very short distance', () {
+      var stats = SessionStats(duration: Duration(minutes: 10), distance: 0.9);
+      expect(stats.avgPace, 0);
+    });
+
+    test('avgPace short but valid distance', () {
+      var stats = SessionStats(duration: Duration(minutes: 1), distance: 1);
+      expect(stats.avgPace, 1000);
+    });
+
+    test('avgPace 4min/km', () {
+      var stats = SessionStats(duration: Duration(minutes: 4), distance: 1000);
+      expect(stats.avgPace, 4);
+    });
+  });
 }
