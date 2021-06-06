@@ -7,7 +7,7 @@ lint:
 unittest:
 	flutter test test/unit
 
-test-widgets:
-	flutter test test/widget_test.dart
+smoketest:
+	flutter test test/smoke
 
-test: test-formatting lint unittest test-widgets
+test: test-formatting lint unittest smoketest

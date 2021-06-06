@@ -42,7 +42,7 @@ jobs:
         run: make unittest
 
       - name: Run smoke tests
-        run: make test-widgets
+        run: make smoketest
 
       - name: Build APK
         run: flutter build apk
