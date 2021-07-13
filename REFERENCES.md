@@ -1,3 +1,7 @@
+# References
+
+## Other running apps
+
 - (SmashRun)[https://smashrun.com]
   Web app, aggregator for running data
   - Good:
@@ -46,3 +50,14 @@
   - Bad:
     - Paid
     - Ugly ("designed by programmers")
+
+## File formats
+
+- Strava supported formats
+ https://developers.strava.com/docs/uploads/
+
+- FIT
+ https://developer.garmin.com/fit/overview/
+
+- Garmin TCX schema
+ https://www8.garmin.com/xmlschemas/TrainingCenterDatabasev2.xsd

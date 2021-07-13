@@ -108,31 +108,43 @@ void main() {
       expect(stats.distance, 0);
       expect(stats.avgPace, 0);
     });
+
+    test('StatsCalculator with many close events', () {
+      final List<Event> events = List<int>.generate(31, (i) => i, growable: false).map((i) {
+        // 0.00001 degree change in latitude should be roughly 10m
+        return Event(lat: 0 + (i / 100000), lon: 0, timestamp: now.add(Duration(seconds: i)));
+      }).toList(growable: false);
+      final stats = StatsCalculator(events).calculate();
+
+      expect(stats.duration, Duration(seconds: 30));
+      expect(stats.distance, inClosedOpenRange(30, 35));
+      expect(stats.avgPace, inClosedOpenRange(14, 16));
+    });
   });
 
   group('SessionStats', () {
     test('avgPace with no duration', () {
-      var stats = SessionStats(duration: Duration(), distance: 10);
+      var stats = SessionStats(numEvents: 1, numInvalidEvents: 0, duration: Duration(), distance: 10);
       expect(stats.avgPace, 0);
     });
 
     test('avgPage with no distance', () {
-      var stats = SessionStats(duration: Duration(minutes: 10), distance: 0);
+      var stats = SessionStats(numEvents: 1, numInvalidEvents: 0, duration: Duration(minutes: 10), distance: 0);
       expect(stats.avgPace, 0);
     });
 
     test('avgPace with very short distance', () {
-      var stats = SessionStats(duration: Duration(minutes: 10), distance: 0.9);
+      var stats = SessionStats(numEvents: 1, numInvalidEvents: 0, duration: Duration(minutes: 10), distance: 0.9);
       expect(stats.avgPace, 0);
     });
 
     test('avgPace short but valid distance', () {
-      var stats = SessionStats(duration: Duration(minutes: 1), distance: 1);
+      var stats = SessionStats(numEvents: 1, numInvalidEvents: 0, duration: Duration(minutes: 1), distance: 1);
       expect(stats.avgPace, 1000);
     });
 
     test('avgPace 4min/km', () {
-      var stats = SessionStats(duration: Duration(minutes: 4), distance: 1000);
+      var stats = SessionStats(numEvents: 1, numInvalidEvents: 0, duration: Duration(minutes: 4), distance: 1000);
       expect(stats.avgPace, 4);
     });
   });

@@ -51,10 +51,6 @@ class _FKTGoHomeState extends State<FKTGoHome> {
     });
   }
 
-  void newSession() {
-    session = Session(Inputs(location: DeviceLocationInputs()));
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
